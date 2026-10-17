@@ -69,7 +69,7 @@ class MLXService {
                     VLMModelFactory.shared
                 }
 
-            let downloader = #hubDownloader()
+            let downloader = StreamingDownloader()
             let loader = #huggingFaceTokenizerLoader()
 
             // Load model and track download progress

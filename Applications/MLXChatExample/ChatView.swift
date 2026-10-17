@@ -61,6 +61,9 @@ struct ChatView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
+                if let progress = vm.modelDownloadProgress, !progress.isFinished {
+    DownloadBannerView(progress: progress)
+}
                 // Display conversation history
                 ConversationView(messages: vm.messages)
 

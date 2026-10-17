@@ -1,0 +1,27 @@
+name: Build IPA
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Metal toolchain
+        run: xcodebuild -downloadComponent MetalToolchain || true
+      - name: Build
+        run: |
+          xcodebuild -project mlx-swift-examples.xcodeproj \
+            -scheme MLXChatExample -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            -skipMacroValidation -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            build
+      - name: Package IPA
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphoneos/MLXChatExample.app Payload/
+          zip -r MLXChat.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MLXChat-ipa
+          path: MLXChat.ipa

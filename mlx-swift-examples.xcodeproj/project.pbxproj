@@ -331,6 +331,7 @@
 				"MLXChatExample/Support/HubApi+default.swift",
 				"MLXChatExample/Support/Preview Content/Preview Assets.xcassets",
 				MLXChatExample/Support/SampleData.swift,
+                MLXChatExample/Support/StreamingDownloader.swift,
 				MLXChatExample/ViewModels/ChatViewModel.swift,
 				MLXChatExample/Views/ConversationView.swift,
                 MLXChatExample/Views/DownloadBannerView.swift,

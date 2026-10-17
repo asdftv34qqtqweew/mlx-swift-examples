@@ -333,6 +333,7 @@
 				MLXChatExample/Support/SampleData.swift,
 				MLXChatExample/ViewModels/ChatViewModel.swift,
 				MLXChatExample/Views/ConversationView.swift,
+                MLXChatExample/Views/DownloadBannerView.swift,
 				MLXChatExample/Views/MediaPreviewView.swift,
 				MLXChatExample/Views/MessageView.swift,
 				MLXChatExample/Views/PromptField.swift,

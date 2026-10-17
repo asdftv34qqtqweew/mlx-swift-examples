@@ -75,7 +75,9 @@ struct DownloadBannerView: View {
         .padding(.vertical, 8)
         .background(.thinMaterial)
         .onReceive(timer) { date in
-            let current = progress.completedUnitCount
+            // A parent Progress only advances completedUnitCount when a child
+            // (one file) finishes. fractionCompleted includes partial progress.
+            let current = Int64(progress.fractionCompleted * Double(max(progress.totalUnitCount, 0)))
             let dt = max(date.timeIntervalSince(lastSample), 0.001)
             if current != completed {
                 let instant = Double(current - completed) / dt
